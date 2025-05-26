@@ -113,11 +113,34 @@ function BillPage() {
   };
 
   return (
-    <div className="bill-bg">
-      <div className="bill-container">
+    <div
+      className="bill-bg"
+      style={{
+        minHeight: "100vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "1rem",
+      }}
+    >
+      <div
+        className="bill-container"
+        style={{
+          width: "100%",
+          maxWidth: "800px",
+          padding: "1rem",
+          background: "transparent",
+        }}
+      >
         <h1
           className="hotel-title animate-title"
-          style={{ color: "#f55", marginBottom: 0 }}
+          style={{
+            color: "#f55",
+            marginBottom: 0,
+            fontSize: "clamp(2rem, 5vw, 3rem)",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+          }}
         >
           HOTEL24X7
         </h1>
@@ -126,8 +149,9 @@ function BillPage() {
           style={{
             color: "#2e1ef7",
             margin: "1.2rem 0 0.5rem 0",
-            fontSize: "2.5rem",
+            fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
             fontWeight: 700,
+            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
           }}
         >
           Room Type
@@ -136,7 +160,8 @@ function BillPage() {
           className="bill-room-options"
           style={{
             display: "flex",
-            gap: "2.5rem",
+            flexWrap: "wrap",
+            gap: "1rem",
             justifyContent: "center",
             marginBottom: "2rem",
           }}
@@ -144,11 +169,12 @@ function BillPage() {
           <label
             style={{
               fontFamily: "Luckiest Guy",
-              fontSize: "1.5rem",
+              fontSize: "clamp(1rem, 3vw, 1.5rem)",
               color: "#111",
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
+              padding: "0.5rem",
             }}
           >
             <input
@@ -163,11 +189,12 @@ function BillPage() {
           <label
             style={{
               fontFamily: "Luckiest Guy",
-              fontSize: "1.5rem",
+              fontSize: "clamp(1rem, 3vw, 1.5rem)",
               color: "#111",
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
+              padding: "0.5rem",
             }}
           >
             <input
@@ -182,11 +209,12 @@ function BillPage() {
           <label
             style={{
               fontFamily: "Luckiest Guy",
-              fontSize: "1.5rem",
+              fontSize: "clamp(1rem, 3vw, 1.5rem)",
               color: "#111",
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
+              padding: "0.5rem",
             }}
           >
             <input
@@ -201,10 +229,11 @@ function BillPage() {
         </div>
         <h2
           style={{
-            fontSize: "3rem",
+            fontSize: "clamp(1.5rem, 4vw, 3rem)",
             fontWeight: 400,
             margin: "1.5rem 0 1rem 0",
             color: "#111",
+            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.2)",
           }}
         >
           Food Type
@@ -213,7 +242,8 @@ function BillPage() {
           className="bill-food-options"
           style={{
             display: "flex",
-            gap: "3rem",
+            flexWrap: "wrap",
+            gap: "1rem",
             justifyContent: "center",
             marginBottom: "2rem",
           }}
@@ -223,10 +253,11 @@ function BillPage() {
               color: "#8e24aa",
               fontFamily: "Montserrat",
               fontWeight: 700,
-              fontSize: "2rem",
+              fontSize: "clamp(1rem, 3vw, 2rem)",
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
+              padding: "0.5rem",
             }}
           >
             <input
@@ -242,10 +273,11 @@ function BillPage() {
               color: "#8e24aa",
               fontFamily: "Montserrat",
               fontWeight: 700,
-              fontSize: "2rem",
+              fontSize: "clamp(1rem, 3vw, 2rem)",
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
+              padding: "0.5rem",
             }}
           >
             <input
@@ -261,10 +293,11 @@ function BillPage() {
               color: "#8e24aa",
               fontFamily: "Montserrat",
               fontWeight: 700,
-              fontSize: "2rem",
+              fontSize: "clamp(1rem, 3vw, 2rem)",
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
+              padding: "0.5rem",
             }}
           >
             <input
@@ -276,51 +309,202 @@ function BillPage() {
             DINNER
           </label>
         </div>
-        <div className="bill-form">
-          <div className="bill-form-row">
-            <label>NO OF DAYS</label>
-            <input
-              type="number"
-              min="1"
-              className="bill-input"
-              value={noOfDays}
-              onChange={(e) => setNoOfDays(e.target.value)}
-            />
-            <button
-              className="bill-calc-btn"
-              type="button"
-              onClick={handleCalculate}
+        <div
+          className="bill-form"
+          style={{
+            width: "100%",
+            maxWidth: "600px",
+            margin: "0 auto",
+            padding: "0.5rem",
+          }}
+        >
+          <div
+            className="bill-form-row"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+              marginBottom: "1rem",
+            }}
+          >
+            <label
+              style={{
+                fontSize: "clamp(1rem, 3vw, 1.2rem)",
+                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
+              }}
             >
-              CALCULATE
-            </button>
+              NO OF DAYS
+            </label>
+            <div
+              style={{
+                display: "flex",
+                gap: "0.5rem",
+                flexWrap: "wrap",
+                width: "100%",
+              }}
+            >
+              <input
+                type="number"
+                min="1"
+                className="bill-input"
+                value={noOfDays}
+                onChange={(e) => setNoOfDays(e.target.value)}
+                style={{
+                  flex: "1",
+                  minWidth: "150px",
+                  padding: "0.5rem",
+                  borderRadius: "4px",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  background: "rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(5px)",
+                  color: "#000",
+                }}
+              />
+              <button
+                className="bill-calc-btn"
+                type="button"
+                onClick={handleCalculate}
+                style={{
+                  padding: "0.5rem 1rem",
+                  fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
+                  whiteSpace: "nowrap",
+                  minWidth: "120px",
+                  background: "rgba(46, 30, 247, 0.8)",
+                  border: "none",
+                  borderRadius: "4px",
+                  color: "white",
+                  cursor: "pointer",
+                  backdropFilter: "blur(5px)",
+                }}
+              >
+                CALCULATE
+              </button>
+            </div>
           </div>
-          <div className="bill-form-row">
-            <label>NO OF PERSON</label>
-            <input
-              type="number"
-              min="1"
-              className="bill-input"
-              value={noOfPerson}
-              onChange={(e) => setNoOfPerson(e.target.value)}
-            />
-            <button
-              className="bill-next-btn"
-              type="button"
-              onClick={handleNext}
+          <div
+            className="bill-form-row"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+              marginBottom: "1rem",
+            }}
+          >
+            <label
+              style={{
+                fontSize: "clamp(1rem, 3vw, 1.2rem)",
+                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
+              }}
             >
-              NEXT
-            </button>
+              NO OF PERSON
+            </label>
+            <div
+              style={{
+                display: "flex",
+                gap: "0.5rem",
+                flexWrap: "wrap",
+                width: "100%",
+              }}
+            >
+              <input
+                type="number"
+                min="1"
+                className="bill-input"
+                value={noOfPerson}
+                onChange={(e) => setNoOfPerson(e.target.value)}
+                style={{
+                  flex: "1",
+                  minWidth: "150px",
+                  padding: "0.5rem",
+                  borderRadius: "4px",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  background: "rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(5px)",
+                  color: "#000",
+                }}
+              />
+              <button
+                className="bill-next-btn"
+                type="button"
+                onClick={handleNext}
+                style={{
+                  padding: "0.5rem 1rem",
+                  fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
+                  whiteSpace: "nowrap",
+                  minWidth: "120px",
+                  background: "rgba(46, 30, 247, 0.8)",
+                  border: "none",
+                  borderRadius: "4px",
+                  color: "white",
+                  cursor: "pointer",
+                  backdropFilter: "blur(5px)",
+                }}
+              >
+                NEXT
+              </button>
+            </div>
           </div>
-          <div className="bill-form-row">
-            <label>NET PAY</label>
-            <input type="text" className="bill-input" value={netPay} readOnly />
-            <button
-              className="bill-clear-btn"
-              type="button"
-              onClick={handleClear}
+          <div
+            className="bill-form-row"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+              marginBottom: "1rem",
+            }}
+          >
+            <label
+              style={{
+                fontSize: "clamp(1rem, 3vw, 1.2rem)",
+                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
+              }}
             >
-              CLEAR
-            </button>
+              NET PAY
+            </label>
+            <div
+              style={{
+                display: "flex",
+                gap: "0.5rem",
+                flexWrap: "wrap",
+                width: "100%",
+              }}
+            >
+              <input
+                type="text"
+                className="bill-input"
+                value={netPay}
+                readOnly
+                style={{
+                  flex: "1",
+                  minWidth: "150px",
+                  padding: "0.5rem",
+                  borderRadius: "4px",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  background: "rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(5px)",
+                  color: "#000",
+                }}
+              />
+              <button
+                className="bill-clear-btn"
+                type="button"
+                onClick={handleClear}
+                style={{
+                  padding: "0.5rem 1rem",
+                  fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
+                  whiteSpace: "nowrap",
+                  minWidth: "120px",
+                  background: "rgba(46, 30, 247, 0.8)",
+                  border: "none",
+                  borderRadius: "4px",
+                  color: "white",
+                  cursor: "pointer",
+                  backdropFilter: "blur(5px)",
+                }}
+              >
+                CLEAR
+              </button>
+            </div>
           </div>
         </div>
       </div>
