@@ -7,10 +7,12 @@ import {
 } from "react-router-dom";
 import "./App.css";
 
+const API_URL = "https://hotell-backend.onrender.com";
+
 function LoginPage() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -331,9 +333,9 @@ function CustomerListPage() {
   const navigate = useNavigate();
 
   const fetchCustomers = () => {
-    fetch("http://localhost:5001/api/customers")
+    fetch(`${API_URL}/api/customers`)
       .then((res) => res.json())
-      .then((data) => setCustomers(data))
+      .then((data) => setCustomers(data.data))
       .catch((err) => console.error("Error fetching customers:", err));
   };
 
@@ -345,7 +347,7 @@ function CustomerListPage() {
     if (window.confirm("Are you sure you want to delete this customer?")) {
       try {
         const response = await fetch(
-          `http://localhost:5001/api/delete-customer/${customerId}`,
+          `${API_URL}/api/delete-customer/${customerId}`,
           {
             method: "DELETE",
           }
@@ -467,17 +469,20 @@ function CustomerDetailsPage() {
       Phone_no: form.phone,
     };
     try {
-      const res = await fetch("http://localhost:5001/api/save-customer", {
+      const res = await fetch(`${API_URL}/api/save-customer`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+      const data = await res.json();
       if (res.ok) {
+        alert("Customer saved successfully");
         navigate("/customer-list");
       } else {
-        alert("Failed to save customer");
+        alert(data.error || "Failed to save customer");
       }
     } catch (err) {
+      console.error("Error:", err);
       alert("Error connecting to backend");
     }
   };
